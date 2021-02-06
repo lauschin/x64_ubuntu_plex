@@ -24,6 +24,11 @@ for package in acl smartmontools mailutils msmtp msmtp-mta; do
 	apt-get install $package -y
 done
 
+echo "Enabling Plex Respository..."
+sleep 2
+echo deb https://downloads.plex.tv/repo/deb public main | tee /etc/apt/sources.list.d/plexmediaserver.list
+curl https://downloads.plex.tv/plex-keys/PlexSign.key | sudo apt-key add -
+
 echo "Creating media directories for Plex..."
 sleep 2
 mkdir /media/Movies /media/Music /media/Shows
